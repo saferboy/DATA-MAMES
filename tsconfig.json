@@ -25,7 +25,8 @@
       ],
       "@schema/*": [
         "./src/*"
-      ]
+      ],
+      "@config/*":["./config/*"]
     },
     "sourceMap": true,
     "outDir": "dist",

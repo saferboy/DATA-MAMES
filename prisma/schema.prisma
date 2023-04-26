@@ -14,7 +14,6 @@ model User {
   id       Int    @id @default(autoincrement())
   name     String
   surname  String
-  nickName String @unique
+  nickname String @unique
   password String
-  token    String
 }

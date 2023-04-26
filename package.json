@@ -13,13 +13,15 @@
     "@middleware": "lib/middleware",
     "@model": "lib/model",
     "@routes": "lib/routes",
-    "@service": "lib/service"
+    "@service": "lib/service",
+    "@config": "lib/config"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/config": "^3.3.0",
     "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/module-alias": "^2.0.1",
     "joi": "^17.9.2",
     "prisma": "^4.13.0",
@@ -34,6 +36,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "module-alias": "^2.2.2"
+    "jsonwebtoken": "^9.0.0",
+    "jwt-redis": "^7.0.3",
+    "module-alias": "^2.2.2",
+    "redis": "^4.6.5"
   }
 }
