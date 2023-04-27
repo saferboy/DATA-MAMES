@@ -23,19 +23,18 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
         const payload: Payload = {
             userId: newUser.id,
+            nickname: newUser.nickname,
             name: newUser.name,
             surname: newUser.surname,
-            nickname: newUser.nickname
         }
 
         const token = await sign(payload)
 
         res.status(200).json({
-            id: newUser.id,
+            userId: newUser.id,
+            nickname: newUser.nickname,
             name: newUser.name,
             surname: newUser.surname,
-            nickName: newUser.nickname,
-            password: newUser.password,
             token: token
         })
 
