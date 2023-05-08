@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt"
 import { Payload } from "@model/index";
 
-import { findUser } from "@service/user.service";
+import { findUser } from "@service/auth.service";
 import { sign } from '@service/jwt.service';
 
 export default async (req: Request, res: Response, next: NextFunction) => {

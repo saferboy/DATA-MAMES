@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { UserDto } from "@model/index";
 import { Payload } from "@model/index";
 
-import { findUser, createUser } from "@service/user.service";
+import { findUser, createUser } from "@service/auth.service";
 import { sign } from "@service/jwt.service";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
