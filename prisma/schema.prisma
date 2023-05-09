@@ -21,8 +21,8 @@ model User {
 
 model Memes {
   id          Int    @id @default(autoincrement())
-  description String
   image       String
+  description String
 }
 
 enum Status {

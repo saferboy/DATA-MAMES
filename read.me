@@ -1,0 +1,17 @@
+
+
+
+export const deleteBlog = async (blogId: number) => {
+    const result = await prisma.blogs.delete({
+        where: {
+            id: blogId
+        }
+    })
+
+    console.log(result.img);
+
+    fs.rm(result.img, (error) => {
+        console.log('bla')
+    })
+    return result
+}
