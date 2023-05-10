@@ -11,12 +11,12 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  surname  String
-  nickname String @unique
-  password String
-  role     Status @default(USER)
+  id          Int        @id @default(autoincrement())
+  name        String
+  surname     String
+  nickname    String     @unique
+  password    String
+  permissions Permission[]
 }
 
 model Memes {
@@ -25,7 +25,23 @@ model Memes {
   description String
 }
 
-enum Status {
-  USER
-  ADMIN
+model Items {
+  id          Int    @id @unique @default(autoincrement())
+  author      Auhtor @relation(fields: [auhtorId], references: [id])
+  creatreAt   String
+  description String
+  thumbnail   String
+  auhtorId    Int
+}
+
+model Auhtor {
+  id       Int     @id @default(autoincrement())
+  nickname String
+  avatar   String
+  Item     Items[]
+}
+
+enum Permission {
+  user
+  admin
 }

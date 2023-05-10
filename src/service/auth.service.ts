@@ -12,7 +12,8 @@ export const createUser = async (data: UserDto) => {
             name: data.name,
             surname:    data.surname,
             nickname:   data.nickname,
-            password:   hashPassword
+            password:   hashPassword,
+            
         }
     })
 }

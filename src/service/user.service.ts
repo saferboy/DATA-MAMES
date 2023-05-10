@@ -1,17 +1,14 @@
 import { UserDto } from "@model/user-model.dto";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, User } from "@prisma/client";
 
 const prisma = new PrismaClient()
 
-
 export const allUsers = async () => {
-    return prisma.user.findMany()
+    return await prisma.user.findMany()
 }
 
-
-
 export const findUserById = async (id: number) => {
-    return prisma.user.findUnique({
+    return await prisma.user.findUnique({
         where: {
             id: id
         }
@@ -20,7 +17,7 @@ export const findUserById = async (id: number) => {
 
 
 export const updateUser = async (id: number, newUser: UserDto) => {
-    return prisma.user.update({
+    return await prisma.user.update({
         where: {
             id: id
         },
@@ -35,9 +32,10 @@ export const updateUser = async (id: number, newUser: UserDto) => {
 
 
 export const deleteUser = async (id: number) => {
-    return prisma.user.delete({
+    return await prisma.user.delete({
         where: {
             id: id
         }
     })
 }
+
