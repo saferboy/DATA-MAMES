@@ -43,11 +43,12 @@ model Auhtor {
 }
 
 model Comment {
-  id      Int   @id @unique @default(autoincrement())
+  id      Int   @id @default(autoincrement())
   memeId  Memes @relation(fields: [memesId], references: [id])
   memesId Int
   comment String
 }
+
 
 model Like {
   id Int @id @unique @default(autoincrement())
