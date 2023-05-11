@@ -45,8 +45,9 @@ export default (...permissions: Permission[]) => {
             }
             
         } catch (error) {
+            console.log(error);
             return res.status(401).send({ 
-                message: 'invalid token'
+                message: 'invalid token',
             })
         }
     }

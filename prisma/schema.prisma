@@ -11,18 +11,19 @@ datasource db {
 }
 
 model User {
-  id          Int        @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   name        String
   surname     String
-  nickname    String     @unique
+  nickname    String       @unique
   password    String
   permissions Permission[]
 }
 
 model Memes {
-  id          Int    @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   image       String
   description String
+  Comment     Comment[]
 }
 
 model Items {
@@ -40,6 +41,20 @@ model Auhtor {
   avatar   String
   Item     Items[]
 }
+
+model Comment {
+  id      Int   @id @unique @default(autoincrement())
+  memeId  Memes @relation(fields: [memesId], references: [id])
+  memesId Int
+  comment String
+}
+
+model Like {
+  id Int @id @unique @default(autoincrement())
+  like Boolean @default(true)
+}
+
+
 
 enum Permission {
   user

@@ -26,9 +26,10 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         if(bcrypt.compareSync(password, user.password)) {
             const payload: Payload = {
                 userId: user.id,
-                nickname:   user.nickname,
-                name:       user.name,
-                surname:    user.surname
+                nickname: user.nickname,
+                name: user.name,
+                surname: user.surname,
+                permissions: []
             }
 
             const token = await sign(payload)
