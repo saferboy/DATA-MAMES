@@ -14,3 +14,13 @@ export const loginBody = joi.object({
     password:   joi.string().min(1).required()
 })
 
+
+export const memeBody = joi.object({
+    image: joi.string().min(0),
+    description: joi.string().min(1).required()
+})
+
+
+export const CommentBody = joi.object({
+    comment: joi.string().min(1).required()
+})

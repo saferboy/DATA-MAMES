@@ -12,10 +12,10 @@ export const createMeme = async (image: string, description: string) => {
     })
 }
 
-export const findMeme = async (memId: number) => {
+export const findMeme = async (id: number) => {
     return prisma.memes.findUnique({
         where: {
-            id: memId
+            id: id
         }
     })
 }
