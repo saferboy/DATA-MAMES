@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'
 const prisma = new PrismaClient()
 
 
-export const createUser = async (data: UserDto) => {
+export const createUser = async ( avatar: string, data: UserDto) => {
     const hashPassword = bcrypt.hashSync(data.password, bcrypt.genSaltSync(10))
     return prisma.user.create({
         data: {
@@ -13,7 +13,7 @@ export const createUser = async (data: UserDto) => {
             surname:    data.surname,
             nickname:   data.nickname,
             password:   hashPassword,
-            
+            avatar:     avatar   
         }
     })
 }

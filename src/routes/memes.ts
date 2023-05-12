@@ -1,20 +1,20 @@
-import { Router } from "express";
-import { upload } from "@middleware/upload";
-import { createValidator } from "express-joi-validation"
+// import { Router } from "express";
+// import { upload } from "@middleware/upload";
+// import { createValidator } from "express-joi-validation"
 
-import createMeme from "@controller/meme/createMeme";
-import createComment from "@controller/comment/createComment";
-import findComment from "@controller/comment/findComment";
+// import createMeme from "@controller/meme/createMeme";
+// import createComment from "@controller/comment/createComment";
+// import findComment from "@controller/comment/findComment";
 
-import { CommentBody, memeBody } from "../joi.schema";
+// import { CommentBody, memeBody } from "../joi.schema";
 
-const validator = createValidator()
+// const validator = createValidator()
 
-const router = Router()
+// const router = Router()
 
-    .post('/', upload.single('file'), validator.body(memeBody), createMeme)
+//     .post('/', upload.single('file'), validator.body(memeBody), createMeme)
 
-    .post('/:id/comment', validator.body(CommentBody), createComment)
-    .get('/:memeId/comment', findComment)
+//     .post('/:id/comment', validator.body(CommentBody), createComment)
+//     .get('/:memeId/comment', findComment)
 
-export default router
+// export default router

@@ -10,7 +10,15 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     try {
 
         const userInfo: UserDto = req.body
+        
+        if (!req.file) {
+            return res.status(400).json({
+                message: "File image not provided"
+            })
+        }
 
+        const avatar = req.file.path
+        
         let user = await findUser(userInfo.nickname)
 
         if (user) {
@@ -19,7 +27,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             })
         }
 
-        const newUser = await createUser(userInfo)
+        const newUser = await createUser(avatar, userInfo)
 
         const payload: Payload = {
             userId: newUser.id,
@@ -36,6 +44,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             nickname: newUser.nickname,
             name: newUser.name,
             surname: newUser.surname,
+            avatar: newUser.avatar,
             token: token
         })
 

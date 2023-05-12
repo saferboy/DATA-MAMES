@@ -16,7 +16,7 @@ export const findUserById = async (id: number) => {
 }
 
 
-export const updateUser = async (id: number, newUser: UserDto) => {
+export const updateUser = async (id: number, newUser: UserDto, avatar: string) => {
     return await prisma.user.update({
         where: {
             id: id
@@ -25,7 +25,8 @@ export const updateUser = async (id: number, newUser: UserDto) => {
             name: newUser.name,
             surname: newUser.surname,
             nickname: newUser.nickname,
-            password: newUser.password
+            password: newUser.password,
+            avatar:   avatar
         }
     })
 }

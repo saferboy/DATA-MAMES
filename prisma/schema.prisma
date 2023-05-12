@@ -23,6 +23,7 @@ model User {
   Like        Like[]
 }
 
+
 model Meme {
   id          Int       @id @default(autoincrement())
   image       String
@@ -37,12 +38,14 @@ model Meme {
   Like        Like[]
 }
 
+
 model Category {
   id    Int    @id @default(autoincrement())
   title String
   emoji String
   Meme  Meme[]
 }
+
 
 model Comment {
   id        Int      @id @default(autoincrement())
@@ -54,14 +57,16 @@ model Comment {
   memeId    Int
 }
 
+
 model Like {
   id       Int     @id @default(autoincrement())
   like     Boolean @default(true)
   authorId User    @relation(fields: [userId], references: [id])
   userId   Int
-  meme     Meme    @relation(fields: [memeId], references: [id])
+  memeID    Meme    @relation(fields: [memeId], references: [id])
   memeId   Int
 }
+
 
 enum Permission {
   user

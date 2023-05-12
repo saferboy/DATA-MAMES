@@ -24,6 +24,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             name: remove.name,
             surname: remove.surname,
             nickname: remove.nickname,
+            avatar: remove.avatar
         })
 
     } catch (err) {
