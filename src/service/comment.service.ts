@@ -15,8 +15,11 @@ export const createComment = async(memeId: number, comment: string) => {
 export const findComment = async (memeId: number) => {
     return prisma.comment.findMany({
         where: {
-            id: memeId
-        }
+            memesId: memeId
+        },
+        // include: {
+        //     author: true
+        // }
     })
 }
 

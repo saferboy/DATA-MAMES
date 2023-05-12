@@ -16,46 +16,52 @@ model User {
   surname     String
   nickname    String       @unique
   password    String
+  avatar      String
   permissions Permission[]
+  Meme        Meme[]
+  Comment     Comment[]
+  Like        Like[]
 }
 
-model Memes {
+model Meme {
   id          Int       @id @default(autoincrement())
   image       String
-  description String
-  Comment     Comment[]
-}
-
-model Items {
-  id          Int    @id @unique @default(autoincrement())
-  author      Auhtor @relation(fields: [auhtorId], references: [id])
-  creatreAt   String
-  description String
   thumbnail   String
-  auhtorId    Int
+  description String
+  createdAt   DateTime
+  authorId    User      @relation(fields: [userId], references: [id])
+  userId      Int
+  category    Category  @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  Comment     Comment[]
+  Like        Like[]
 }
 
-model Auhtor {
-  id       Int     @id @default(autoincrement())
-  nickname String
-  avatar   String
-  Item     Items[]
+model Category {
+  id    Int    @id @default(autoincrement())
+  title String
+  emoji String
+  Meme  Meme[]
 }
 
 model Comment {
-  id      Int   @id @default(autoincrement())
-  memeId  Memes @relation(fields: [memesId], references: [id])
-  memesId Int
-  comment String
+  id        Int      @id @default(autoincrement())
+  comment   String
+  createdAt DateTime
+  authorId  User     @relation(fields: [userId], references: [id])
+  userId    Int
+  memesId   Meme     @relation(fields: [memeId], references: [id])
+  memeId    Int
 }
-
 
 model Like {
-  id Int @id @unique @default(autoincrement())
-  like Boolean @default(true)
+  id       Int     @id @default(autoincrement())
+  like     Boolean @default(true)
+  authorId User    @relation(fields: [userId], references: [id])
+  userId   Int
+  meme     Meme    @relation(fields: [memeId], references: [id])
+  memeId   Int
 }
-
-
 
 enum Permission {
   user
