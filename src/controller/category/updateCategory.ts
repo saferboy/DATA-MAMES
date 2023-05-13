@@ -19,10 +19,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         const newCtg = await updateCategory(id, detail)
 
         if (oldCtg.title || oldCtg.emoji == newCtg.title || oldCtg.emoji) {
-            // throw new Error("Category alredy updated");
-            return res.status(400).json({
-                message: "Category alredy updated"
-            })
+            return res.status(304).json()
         }
         
 
