@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 
 
-// export const createMeme = async (image: string, description: string) => {
+// export const createMeme = async (image: string,thumbnail: string, description: string) => {
 //     return prisma.meme.create({
 //         data: {
 //             image,

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { findComment } from "@service/comment.service";
-import { findMeme } from "@service/meme.service";
+// import { findMeme } from "@service/meme.service";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
 
@@ -8,13 +8,13 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
         const id = +req.params.memeId
 
-        const find = await findMeme(id)
+        // const find = await findMeme(id)
 
-        if (!find) {
-            return res.status(404).json({
-                message: `Meme by ${id} not found`
-            })
-        }
+        // if (!find) {
+        //     return res.status(404).json({
+        //         message: `Meme by ${id} not found`
+        //     })
+        // }
 
         const options = await findComment(id)
 

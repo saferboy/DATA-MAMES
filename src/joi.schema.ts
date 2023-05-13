@@ -15,6 +15,17 @@ export const loginBody = joi.object({
 })
 
 
+export const CategoryBody = joi.object({
+    title:  joi.string().min(1).required(),
+    emoji:  joi.string().min(1).required
+})
+
+export const CategoryParam = joi.object({
+    id: joi.number().min(0).required()
+})
+
+
+
 export const memeBody = joi.object({
     image: joi.string().min(0),
     description: joi.string().min(1).required()
