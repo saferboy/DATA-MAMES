@@ -1,2 +1,5 @@
 export * from './payload.dto'
 export * from './user-model.dto'
+export * from './memeDto'
+export * from './categoryDto'
+export * from './commentDto'

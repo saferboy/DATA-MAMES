@@ -2,10 +2,10 @@ import { Router } from "express";
 
 import { upload } from "@middleware/upload";
 
-import allUsers from "@controller/user/allUsers";
-import findUser from "@controller/user/findUser";
-import updateUser from "@controller/user/updateUser";
-import removeUser from "@controller/user/deleteUser"
+import allUsers from "@controller/user-manage/allUsers";
+import findUser from "@controller/user-manage/findUser";
+import updateUser from "@controller/user-manage/updateUser";
+import removeUser from "@controller/user-manage/deleteUser"
 
 const router = Router()
 
