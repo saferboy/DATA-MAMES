@@ -17,3 +17,16 @@ export const createMeme = async (categoryId: number, userId: number, image: stri
     })
 }
 
+
+export const findMeme = async (id: number) => {
+    return prisma.meme.findUnique({
+        where: {
+            id
+        },
+        include: {
+            authorId: true,
+            Like: true,
+            Comment: true
+        }
+    })
+}
