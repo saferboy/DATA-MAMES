@@ -11,8 +11,8 @@ const validator = createValidator()
 const router = Router()
 
 
-    .post('/:id/comment', validator.body(CommentBody), createComment)
-    .get('/:memeId/comment', findComment)
+    .post('/memes/:id/comment', validator.body(CommentBody), createComment)
+    .get('/memes/:id/comment', findComment)
 
 export default router
 

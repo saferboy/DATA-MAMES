@@ -3,5 +3,5 @@ export interface CommentBody {
     comment: string,
     createdAt: string,
     memeId: number,
-    authorId: string
+    authorId: number
 }

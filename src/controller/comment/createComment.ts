@@ -7,6 +7,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     try {
         
         const id = +req.params.id
+        const userId = + req.params.userId
         const commit = req.body.comment
         const find = await findMeme(id)
 
@@ -16,12 +17,13 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             })
         }
 
-        const newComment = await createComment(id, commit)
+        const newComment = await createComment(id, userId, commit )
 
         return res.status(201).json({
             id: newComment.id,
-            memeId: newComment.memesId,
-            comment: newComment.comment
+            memeId: newComment.memeId,
+            comment: newComment.comment,
+
         })
 
     } catch (error) {
