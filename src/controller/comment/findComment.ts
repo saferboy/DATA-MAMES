@@ -16,15 +16,15 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             })
         }
 
-        const options = await findComment(id)
+        const option = await findComment(id)
 
         return res.status(201).json({
             // memeId: options?.memeId,
-            id: options?.id,
-            comment: options?.comment,
+            id: option?.id,
+            comment: option?.comment,
             author: {
-                id: options?.authorId.id,
-                nickname: options?.authorId.nickname
+                id: option?.authorId.id,
+                nickname: option?.authorId.nickname
             }
         })
 
