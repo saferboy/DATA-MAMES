@@ -1,4 +1,3 @@
-// import { Permission } from '@prisma/client';
 import { Request, Response, NextFunction } from "express";
 import { serverConfig } from '@config/index'
 
@@ -10,6 +9,8 @@ export default (role: string) => {
 
         const token = req.header('authorization')
 
+        console.log(token);
+        
         
         if (!token) {
             return res.status(401).json({
