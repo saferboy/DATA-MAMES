@@ -17,6 +17,6 @@ const router = Router()
 
     .post('/register', upload.single('file'), validator.body(userBody), register)
     .post('/login', validator.body(loginBody), login)
-    .get('/verify', permissions(), verify)
+    .get('/verify', permissions('admin'), verify)
 
 export default router

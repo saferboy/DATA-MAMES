@@ -7,14 +7,14 @@ export default (req: Request, res: Response, next: NextFunction) => {
         
         const payload: Payload = res.locals.payload
         console.dir(res.locals)
-        const { userId, name, surname, nickname, permissions} = payload
+        const { userId, name, surname, nickname, role} = payload
 
         res.json({
             userId,
             name,
             surname,
             nickname,
-            permissions
+            role
         })
     } catch (err) {
         next(err)

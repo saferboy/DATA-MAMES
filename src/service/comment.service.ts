@@ -19,7 +19,7 @@ export const createComment = async (memeId: number,userId: number, comment: Comm
 }
 
 
-export const findComment = async (id: number) => {
+export const findComment = async (id: number)=> {
     return  prisma.comment.findUnique({
         where: {
             id

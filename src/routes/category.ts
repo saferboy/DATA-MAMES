@@ -8,11 +8,14 @@ import allCategory from "@controller/category/allCategory";
 import updateCategory from "@controller/category/updateCategory";
 import deleteCategory from "@controller/category/deleteCategory";
 
+import permissions from "@middleware/permissions";
+
+
 const validator = createValidator()
 
 const router = Router()
 
-    .post('/', validator.fields(CategoryBody), createCategory)
+    .post('/', validator.fields(CategoryBody), permissions('admin'), createCategory)
     .get('/:id', validator.params(CategoryParam), findCategory)
     .get('/', allCategory)
     .put('/:id', validator.fields(CategoryBody), updateCategory)

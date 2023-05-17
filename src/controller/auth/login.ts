@@ -29,7 +29,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
                 nickname: user.nickname,
                 name: user.name,
                 surname: user.surname,
-                permissions: []
+                role: user.role
             }
 
             const token = await sign(payload)
