@@ -1,7 +1,7 @@
 export interface CommentBody {
-    id: number,
-    comment: string,
-    createdAt: string,
-    memeId: number,
-    authorId: number
+  id: number;
+  comment: string;
+  createdAt: string;
+  memeId: number;
+  authorId: number;
 }

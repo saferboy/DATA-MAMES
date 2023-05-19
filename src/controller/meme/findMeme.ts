@@ -17,8 +17,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             id: find.id,
             author: {
                 id: find.userId,
-                nickname: find.authorId.nickname,
-                avatar: find.authorId.avatar
+                nickname: find.author.nickname,
+                avatar: find.author.avatar
             },
             createdAt: find.createdAt,
             description: find.description,

@@ -28,13 +28,14 @@ model Meme {
   image       String
   thumbnail   String
   description String
-  createdAt   DateTime
-  authorId    User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
   userId      Int
-  category    Category  @relation(fields: [categoryId], references: [id])
   categoryId  Int
   Comment     Comment[]
   Like        Like[]
+  
+  category    Category  @relation(fields: [categoryId], references: [id])
+  author      User      @relation(fields: [userId], references: [id])
 }
 
 model Category {

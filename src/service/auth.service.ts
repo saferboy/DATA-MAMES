@@ -1,29 +1,26 @@
 import { UserDto } from "@model/user-model.dto";
 import { PrismaClient } from "@prisma/client";
-import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
+export const createUser = async (avatar: string, data: UserDto) => {
+  const hashPassword = bcrypt.hashSync(data.password, bcrypt.genSaltSync(10));
+  return prisma.user.create({
+    data: {
+      name: data.name,
+      surname: data.surname,
+      nickname: data.nickname,
+      password: hashPassword,
+      avatar: avatar,
+    },
+  });
+};
 
-export const createUser = async ( avatar: string, data: UserDto) => {
-    const hashPassword = bcrypt.hashSync(data.password, bcrypt.genSaltSync(10))
-    return prisma.user.create({
-        data: {
-            name: data.name,
-            surname:    data.surname,
-            nickname:   data.nickname,
-            password:   hashPassword,
-            avatar:     avatar   
-        }
-    })
-}
-
-
-export const findUser = async(nickname: string) => {
-    return prisma.user.findUnique({
-        where: {
-            nickname:  nickname
-        }
-    })
-}
-
+export const findUser = async (nickname: string) => {
+  return prisma.user.findUnique({
+    where: {
+      nickname: nickname,
+    },
+  });
+};
