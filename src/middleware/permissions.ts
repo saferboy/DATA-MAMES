@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import { serverConfig } from "@config/index";
 
 import { verify } from "@service/jwt.service";
 
-export default (role: string) => {
+export default (role: string) => {  
   return async (req: Request, res: Response, next: NextFunction) => {
     const token = req.header("authorization");
 

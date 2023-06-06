@@ -15,7 +15,7 @@ const validator = createValidator()
 
 const router = Router()
 
-    .post('/', validator.fields(CategoryBody), permissions('admin'), createCategory)
+    .post('/', validator.fields(CategoryBody), permissions('user'), createCategory)
     .get('/:id', validator.params(CategoryParam), findCategory)
     .get('/', allCategory)
     .put('/:id', validator.fields(CategoryBody), updateCategory)

@@ -1,15 +1,13 @@
-import { CommentBody } from "@model/commentDto";
 import { Comment, PrismaClient } from "@prisma/client";
-import { string } from "joi";
+
 const prisma = new PrismaClient()
 
-export const createComment = async (memeId: number,userId: number, comment: CommentBody) => {
+export const createComment = async (userId: number, memeId: number, comment: string) => {
     return prisma.comment.create({
         data: {
-            memeId: memeId,
-            userId: userId,
-            comment: comment.comment,
-            createdAt: comment.createdAt,
+            userId,
+            memeId,
+            comment,
         },
         include: {
             authorId: true,
@@ -19,13 +17,13 @@ export const createComment = async (memeId: number,userId: number, comment: Comm
 }
 
 
-export const findComment = async (id: number)=> {
-    return  prisma.comment.findUnique({
+export const findComment = async (id: number) => {
+    return prisma.comment.findUnique({
         where: {
             id
         },
         include: {
-            authorId:  true
+            authorId: true
         }
     })
 }

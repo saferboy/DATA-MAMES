@@ -16,7 +16,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         return res.status(201).json({
             id: find.id,
             author: {
-                id: find.userId,
+                id: find.author.id,
                 nickname: find.author.nickname,
                 avatar: find.author.avatar
             },
@@ -24,8 +24,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             description: find.description,
             thumnail: find.thumbnail,
             image: find.image,
-            likes: find.Like,
-            comments: find.Comment
+            // likes: find.Like,
+            comments: find._count.Comment
         })
 
     } catch (error) {

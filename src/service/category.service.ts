@@ -12,6 +12,16 @@ export const creteCategory = async (category: CategoryDto) => {
   });
 };
 
+
+export const findCategoryByName = async (title: string) => {
+  return prisma.category.findFirst({
+    where: {
+      title
+    }
+  })
+}
+
+
 export const findCategory = async (id: number) => {
   return prisma.category.findUnique({
     where: {

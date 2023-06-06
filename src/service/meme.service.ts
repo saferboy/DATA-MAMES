@@ -20,12 +20,6 @@ export const findMeme = async (id: number) => {
     where: {
       id,
     },
-    // include: {
-    //   author: {
-    //   },
-    //   Like: true,
-    //   Comment: true,
-    // },
     select: {
       id: true,
       author: {

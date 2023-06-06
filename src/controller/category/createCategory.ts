@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { creteCategory } from "@service/category.service";
+import { creteCategory, findCategoryByName } from "@service/category.service";
 import { CategoryDto } from "@model/categoryDto";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
@@ -7,14 +7,24 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
         const category: CategoryDto = req.body
 
+        const oldCategory = await findCategoryByName(category.title)
+
         const newCategory = await creteCategory(category)
 
-        return res.status(201).json({
-            message: "Category crested",
-            id: newCategory.id,
-            title: newCategory.title,
-            emoji: newCategory.emoji
-        })
+        if (oldCategory?.title == category.title) {
+            return res.status(208).json({
+                message: "Category alredy created"
+            })
+        }
+
+        if (category.title !== newCategory.title) {
+            return res.status(201).json({
+                message: "Category created",
+                id: newCategory.id,
+                title: newCategory.title,
+                emoji: newCategory.emoji
+            })
+        }
 
     } catch (error) {
         next(error)
