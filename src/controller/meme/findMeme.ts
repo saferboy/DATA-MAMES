@@ -24,7 +24,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             description: find.description,
             thumnail: find.thumbnail,
             image: find.image,
-            // likes: find.Like,
+            likes: find._count.Like,
             comments: find._count.Comment
         })
 

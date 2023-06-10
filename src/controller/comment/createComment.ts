@@ -1,16 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 import { createComment } from "@service/comment.service";
 import { findMeme } from "@service/meme.service";
-import { Payload } from "@model/payload.dto";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {
     const memeid = +req.params.id;
     const comment = req.body.comment;
-
-    // const payload: Payload = 
-    // const { userId } = payload
-    // console.log(payload)
 
     const find = await findMeme(memeid);
 
